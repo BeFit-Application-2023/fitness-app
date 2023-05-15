@@ -1,0 +1,271 @@
+<!-- <!DOCTYPE html>
+<html lang="en"> -->
+    <!-- <meta charset="UTF-8">
+    <title>Title</title> -->
+{% extends 'base.html' %}
+
+{% block head %}
+
+    <style>
+    	#video {
+    		transform: rotateY(180deg);
+    		-webkit-transform:rotateY(180deg); /* Safari and Chrome */
+    		-moz-transform:rotateY(180deg); /* Firefox */
+    		
+    	}
+    </style>
+    <!-- <meta charset="utf-8"> -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils_3d/control_utils_3d.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose/pose.js" crossorigin="anonymous"></script>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+     <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.0/socket.io.js'></script> -->
+     <script src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.2.0/socket.io.js'></script>
+
+<!-- </head> -->
+{% endblock %}
+{% block body %}
+<div class="container-fluid bg-dark px-0">
+    <div class="row gx-0">
+        <div class="col-lg-3 bg-dark d-none d-lg-block">
+            <a href="index.html" class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
+                <h1 class="m-0 display-4 text-primary text-uppercase">BeFit</h1>
+            </a>
+        </div>
+        <div class="col-lg-9" style="margin-top: 15px; margin-bottom: 10px;">
+            <nav class="navbar navbar-expand-lg bg-dark navbar-dark p-3 p-lg-0 px-lg-5">
+                <a href="home.html" class="navbar-brand d-block d-lg-none">
+                    <h1 class="m-0 display-4 text-primary text-uppercase">BeFit</h1>
+                </a>
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <div class="navbar-nav mr-auto py-0">
+                        <!-- <a href="index.html" class="nav-item nav-link active">Home</a>
+                        <a href="about.html" class="nav-item nav-link">About</a>
+                        <a href="class.html" class="nav-item nav-link">Classes</a>
+                        <a href="team.html" class="nav-item nav-link">Trainers</a>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                            <div class="dropdown-menu rounded-0 m-0">
+                                <a href="blog.html" class="dropdown-item">Blog Grid</a>
+                                <a href="detail.html" class="dropdown-item">Blog Detail</a>
+                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                            </div>
+                        </div>
+                        <a href="contact.html" class="nav-item nav-link">Contact</a> -->
+                    </div>
+                    <!-- <button class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">Join Us</button> -->
+                    <div class="calories-text" style="text-align: right; position: absolute; width: 100px; font-size:25px;">
+                        <img src="{{ url_for('static', filename='img/user.png') }}" style="width: 30%; height: 30%; display: block; margin-left: auto; margin-right: auto;" alt="Image">
+
+                        <label for="first-name">{{ first_name }}</label>
+                        <label for="last-name">{{ second_name }}</label>
+                    </div>
+
+                    <a href="/profile" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">Back</a>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div><br>
+
+    <!-- <label for="exercises">Choose a exercise to perform:</label>
+
+    <select name="exercises" id="exercises" onclick="getOption()">
+        {% for exercise in exercise_list %}
+            <option value="{{ exercise }}">{{ exercise }}</option>
+        {% endfor %}
+    </select> -->
+
+    <!-- <div hidden id="container">
+    <video autoplay id="videoElement"></video>
+    <canvas id="canvas"  width="900" height="700"></canvas> 
+    </div>
+
+    <div class = 'video'>
+        <img id="photo"  width="900"  height="700">
+        <h1>video</h1>
+    </div> -->
+    <div class="train-container">
+        <div class="d-flex">
+
+            <div class="train-left-canvas">
+                <video hidden class="input_video"></video>
+                <p id="disclaimer-training" class="training-disclaimer">Select the exercise and press start to begin the training...</p>
+                <canvas class="output_canvas" style="border-radius: 25px; margin-top: 5px; margin-left: 5px; margin-right: 5px;" width="1200px" height="700px"></canvas>
+                <!-- <div class="landmark-grid-container"></div> -->
+            </div>
+            
+            <div class="train-right-features">
+                <!-- <div class="d-flex"> -->
+                    <div class="train-right-features-up">
+                        <label for="exercises" class="calories-text" style="font-size: 25px;">Choose a exercise to perform:</label>
+
+                        <select name="exercises" class="calories-text" id="exercises" style="width: 100%; height:50px" onclick="getOption()">
+                            {% for exercise in exercise_list %}
+                                <option value="{{ exercise }}">{{ exercise }}</option>
+                            {% endfor %}
+                        <!-- <option value="squats">Squats</option>
+                        <option value="push-ups">Push ups</option>
+                        <option value="bridge">Bridge</option> -->
+                        </select>
+
+                        <label for="exercises" class="calories-text" style="font-size: 25px; margin-top: 90px; margin-left: 50px;">Number of repetitions:</label>
+                        <div class="circle-counter">
+                            <p id="exercise-result" style="font-size:250%; margin-top: 20px; margin-left: 10px;">Not selected</p>    
+                        </div>                
+                    </div>
+
+
+                    <div class="train-right-features-bottom">
+                        <a class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block" style="align-items: center;  justify-content: center; position: sticky;"  onClick="startTraining();">Start</a>
+                    </div>
+                
+                <!-- </div> -->
+            </div>
+        </div>
+    </div>
+    <!-- <input class="submit-button" type="submit" value="Start" onClick="startTraining();"> -->
+
+    <script type="text/javascript" charset="utf-8">
+
+        var current_exercise = document.getElementById("exercises");
+        var value = "{{ exercise_list[0]|safe }}"
+        var result_exercise = document.getElementById("exercise-result");
+        // .value = counter
+
+        function getOption() {
+            selectElement = document.querySelector('#exercises');
+            output = selectElement.options[selectElement.selectedIndex].value;
+            // document.querySelector('.output').textContent = output;
+            value = selectElement.options[selectElement.selectedIndex].value;
+        }
+
+        var socket = io.connect(window.location.protocol + '//' + document.domain + ':' + location.port);
+        socket.on('connect', function(){
+            console.log("Connection established.", socket.connected)
+        });
+        socket.on('disconnect', function(){
+            console.log("Disconnected.", socket.connected)
+        });
+
+        socket.on('response_back', function(counter){
+            result_exercise.style.fontSize = "800%";
+            // document.getElementById("exercise-result").value = counter;
+            result_exercise.textContent = counter;
+            // alert(document.getElementById("exercise-result").value);
+
+            // photo.setAttribute('src', counter);    
+            console.log(counter);
+
+        });
+        // var canvas = document.getElementById('canvas');
+        // var context = canvas.getContext('2d');
+        // const video = document.querySelector("#videoElement");
+
+        // video.width = 900;
+        // video.height = 700; 
+    
+
+        // if (navigator.mediaDevices.getUserMedia) {
+        //     navigator.mediaDevices.getUserMedia({ video: true })
+        //     .then(function (stream) {
+        //         video.srcObject = stream;
+        //         // video.play();
+        //     })
+        //     .catch(function (err0r) {
+
+        //     });
+        // }
+        function startTraining(){
+            const widgetElement = document.getElementsByClassName('viewer-widget-js')[0];
+            // widgetElement.style.visibility='hidden';
+            // widgetElement.style.visibility='hidden';
+
+            const videoElement = document.getElementsByClassName('input_video')[0];
+            const canvasElement = document.getElementsByClassName('output_canvas')[0];
+            const canvasCtx = canvasElement.getContext('2d');
+            // const landmarkContainer = document.getElementsByClassName('landmark-grid-container')[0];
+            // landmarkContainer.style.visibility='hidden';
+            // const grid = new LandmarkGrid(landmarkContainer);
+            
+            // const video = document.getElementById("input_video");
+            const text = document.getElementById("disclaimer-training");
+            
+            videoElement.addEventListener("play", () => {
+                text.classList.add("hide");
+            });
+
+            function onResults(results) {
+                // if (!results.poseLandmarks) {
+                //     grid.updateLandmarks([]);
+                //     return;
+                // }
+                
+                canvasCtx.save();
+                canvasCtx.clearRect(0, 0, canvasElement.width, canvasElement.height);
+                //   canvasCtx.drawImage(results.segmentationMask, 0, 0,
+                //                       canvasElement.width, canvasElement.height);
+                
+                // Only overwrite existing pixels.
+                //   canvasCtx.globalCompositeOperation = 'source-in';
+                //   canvasCtx.fillStyle = '#00FF00';
+                //   canvasCtx.fillRect(0, 0, canvasElement.width, canvasElement.height);
+                
+                // Only overwrite missing pixels.
+                canvasCtx.globalCompositeOperation = 'destination-atop';
+                canvasCtx.drawImage(
+                    results.image, 0, 0, canvasElement.width, canvasElement.height);
+                
+                canvasCtx.globalCompositeOperation = 'source-over';
+                drawConnectors(canvasCtx, results.poseLandmarks, POSE_CONNECTIONS,
+                                {color: '#00FF00', lineWidth: 4});
+                drawLandmarks(canvasCtx, results.poseLandmarks,
+                                {color: '#FF0000', lineWidth: 2});
+                canvasCtx.restore();
+                
+                // grid.updateLandmarks(results.poseWorldLandmarks);
+            }
+            
+            const pose = new Pose({locateFile: (file) => {
+                return `https://cdn.jsdelivr.net/npm/@mediapipe/pose/${file}`;
+            }});
+            pose.setOptions({
+                modelComplexity: 1,
+                smoothLandmarks: true,
+                enableSegmentation: true,
+                smoothSegmentation: true,
+                minDetectionConfidence: 0.5,
+                minTrackingConfidence: 0.5
+                });
+            pose.onResults(onResults);
+            
+            const camera = new Camera(videoElement, {
+                onFrame: async () => {
+                    await pose.send({image: videoElement});
+                },
+                width: 1280,
+                height: 720
+            });
+            camera.start();
+
+            const FPS = 20;
+            setInterval(() => {
+                console.log(1);
+                width=videoElement.width;
+                height=videoElement.height;
+                canvasCtx.drawImage(videoElement, 0, 0, width, height);
+                var data = canvasElement.toDataURL('image/jpeg', 0.5);
+                canvasCtx.clearRect(0, 0, width, height);
+                socket.emit('image', {'image-webp': data, 'exercise': value});
+            }, 1000/10);
+
+        }
+    </script>
+
+
+{% endblock %}

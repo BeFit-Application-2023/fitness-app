@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% block head %}{% endblock %}
+
+{% block body %}
+
+<div class="container-fluid bg-dark px-0">
+    <div class="row gx-0">
+        <div class="col-lg-3 bg-dark d-none d-lg-block">
+            <a href="index.html" class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
+                <h1 class="m-0 display-4 text-primary text-uppercase">BeFit</h1>
+            </a>
+        </div>
+        <div class="col-lg-9" style="margin-top: 15px; margin-bottom: 10px;">
+            <nav class="navbar navbar-expand-lg bg-dark navbar-dark p-3 p-lg-0 px-lg-5">
+                <a href="home.html" class="navbar-brand d-block d-lg-none">
+                    <h1 class="m-0 display-4 text-primary text-uppercase">BeFit</h1>
+                </a>
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <div class="navbar-nav mr-auto py-0">
+                        <!-- <a href="index.html" class="nav-item nav-link active">Home</a>
+                        <a href="about.html" class="nav-item nav-link">About</a>
+                        <a href="class.html" class="nav-item nav-link">Classes</a>
+                        <a href="team.html" class="nav-item nav-link">Trainers</a>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                            <div class="dropdown-menu rounded-0 m-0">
+                                <a href="blog.html" class="dropdown-item">Blog Grid</a>
+                                <a href="detail.html" class="dropdown-item">Blog Detail</a>
+                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                            </div>
+                        </div>
+                        <a href="contact.html" class="nav-item nav-link">Contact</a> -->
+                    </div>
+                    <!-- <button class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">Join Us</button> -->
+                    <div class="calories-text" style="text-align: right; position: absolute; width: 100px; font-size:25px;">
+                        <!-- <img src="{{ url_for('static', filename='img/user.png') }}" style="width: 30%; height: 30%; display: block; margin-left: auto; margin-right: auto;" alt="Image"> -->
+
+                        <label for="first-name">{{ first_name }}</label>
+                        <label for="last-name">{{ second_name }}</label>
+                    </div>
+
+                    <a href="/profile" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">Back</a>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+
+
+<!-- <body> -->
+	<section class="login" style="font-family: 'Oswald', sans-serif; background-color: #2b2d32; height: 900px; width: 100%;">
+
+		<div class="login_box">
+			<div class="left">
+				<!-- <div class="top_link"><a href="#"><img src="https://drive.google.com/u/0/uc?id=16U__U5dJdaTfNGobB_OpwAJ73vM50rPV&export=download" alt="">Back</a></div> -->
+				<div class="contact">
+					<form method="POST">
+                        <div class="d-flex flex-column">
+                            <div style="text-align: center; height: 60px">
+                                <h1>Telegram Authentication</h1><br>
+                                <!-- <button class="submit">LET'S GO</button> -->
+
+                            </div><br><br>
+                            <!-- <input type="text" id="email" name="email" placeholder="EMAIL" size="40">
+                            <input type="text" id="password" name="password" placeholder="PASSWORD" size="40">
+
+                            <button class="submit">Submit</button> -->
+                            
+                            <div>
+                                <input type="text" id="password" style="font-size: 30px; color:#fb5b21b5" name="password" size="20" value="{{ telegram_auth_token }}">
+                            </div>
+                            Copy the token and insert into telegram chat, for chatbot authentication.
+                        </div>
+					</form>
+				</div>
+			</div>
+			<div class="right">
+				<div class="right-text">
+					<h2>BeFit</h2>
+					<h5></h5>
+			</div>
+		</div>
+	</section>
+
+{% endblock %}

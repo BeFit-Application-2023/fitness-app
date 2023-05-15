@@ -1,0 +1,255 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<!-- <div style="text-align: center;">
+    <h1> Profile information </h1>
+</div> -->
+{% endblock %}
+
+{% block body %}
+<!-- Header start -->
+<div class="container-fluid bg-dark px-0">
+    <div class="row gx-0">
+        <div class="col-lg-3 bg-dark d-none d-lg-block">
+            <a href="index.html" class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
+                <h1 class="m-0 display-4 text-primary text-uppercase">BeFit</h1>
+            </a>
+        </div>
+        <div class="col-lg-9" style="margin-top: 15px; margin-bottom: 10px;">
+            <nav class="navbar navbar-expand-lg bg-dark navbar-dark p-3 p-lg-0 px-lg-5">
+                <a href="home.html" class="navbar-brand d-block d-lg-none">
+                    <h1 class="m-0 display-4 text-primary text-uppercase">BeFit</h1>
+                </a>
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <div class="navbar-nav mr-auto py-0">
+                        <!-- <a href="index.html" class="nav-item nav-link active">Home</a>
+                        <a href="about.html" class="nav-item nav-link">About</a>
+                        <a href="class.html" class="nav-item nav-link">Classes</a>
+                        <a href="team.html" class="nav-item nav-link">Trainers</a>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                            <div class="dropdown-menu rounded-0 m-0">
+                                <a href="blog.html" class="dropdown-item">Blog Grid</a>
+                                <a href="detail.html" class="dropdown-item">Blog Detail</a>
+                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                            </div>
+                        </div>
+                        <a href="contact.html" class="nav-item nav-link">Contact</a> -->
+                    </div>
+                    <!-- <button class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">Join Us</button> -->
+                    <div class="calories-text" style="text-align: right; position: absolute; width: 100px; font-size:25px;">
+                        <img src="{{ url_for('static', filename='img/user.png') }}" style="width: 30%; height: 30%; display: block; margin-left: auto; margin-right: auto;" alt="Image">
+
+                        <label for="first-name">{{ first_name }}</label>
+                        <label for="last-name">{{ second_name }}</label>
+                    </div>
+
+                    <a href="/telegram-sync" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">Connect to ChatBOT</a>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+<!-- End header -->
+
+<!-- Information section -->
+<div class="login" style="background: #d6d6d6;"><br>
+    <!-- <form style="text-align:center; font-size: 20px; color: #777777;" method="POST">
+        <div>
+            <label for="first-name">First name: {{ first_name }}</label>
+        </div>
+        <div>
+            <label for="last-name">Last name: {{ second_name }}</label>
+        </div>
+        <div>
+            <label for="email">Email: {{ email }}</label>
+        </div>
+        <div>
+            <a class="fcc-btn" href="/training-session">Train</a>  
+        </div>
+    </form> -->
+    <!-- <div>
+    <div class="half-arc" style="--percentage:25%;">
+        <span class="label">25%</span>
+    </div>
+    
+    <div class="half-arc" style="--percentage:50%;">
+        <span class="label">50%</span>
+    </div>
+    
+    <div class="half-arc" style="--percentage:75%;">
+        <span class="label">75%</span>
+    </div>
+    
+    <div class="half-arc" style="--percentage:100%;">
+        <span class="label">100%</span>
+    </div>
+    </div> -->
+    <div class="container">
+
+        <div class="d-flex">
+
+          <div class="leftpane">
+            <h1 align="center" style="color:#d6d6d6;">Calories</h1>
+            <div class="d-flex">
+                
+                <div class="left-leftinnerpane">
+                    <div class="progress-container" style="margin-left: 25px;">
+                        <svg viewBox="0 0 100 100">
+                            <path class="outer-circle" d="M50 10 a40 40 0 0 1 0 80 a40 40 0 0 1 0 -80"></path>
+                            <path class="inner-circle" d="M50 10 a20 20 0 0 1 0 40 a20 20 0 0 1 0 -40"></path>
+                        </svg>
+                    </div><br>
+                </div>
+                <div class="left-rightinnerpane">
+                    <img src="{{ url_for('static', filename='img/calories.png') }}" style="width: 30%; height: 30%; display: block; margin-left: auto; margin-right: auto;" alt="Image">
+
+                    <a hidden href="https://www.flaticon.com/free-icons/calories" title="calories icons">Calories icons created by Freepik - Flaticon</a><br><br>
+                    <div style="text-align: center;">
+                        <p class="calories-text">Burned: </p>
+                        <p class="calories-text">Consumed: </p> 
+                    </div>
+                </div>
+            <!-- <div class="bottompane"></div> -->
+                
+            </div>
+
+            <div style="background-color: #d6d6d6;"><br></div>
+            <h1 align="center" style="color:#d6d6d6;">Current progress</h1>
+            <div class="d-flex">
+                
+                <div class="left-leftinnerpane">
+                    <div class="progress-container" style="margin-left: 25px;">
+                        <svg viewBox="0 0 100 100">
+                            <path class="outer-circle" d="M50 10 a40 40 0 0 1 0 80 a40 40 0 0 1 0 -80"></path>
+                            <path class="inner-circle" d="M50 10 a20 20 0 0 1 0 40 a20 20 0 0 1 0 -40"></path>
+                        </svg>
+                    </div><br>
+                </div>
+                <div class="left-rightinnerpane">
+                    
+                    <p class="calories-text">Burned: </p>
+                    <p class="calories-text">Consumed: </p> 
+                </div>
+            <!-- <div class="bottompane"></div> -->
+                
+            </div>
+          </div> 
+
+          <div class="rightpane">
+            <h1 align="center" style="color:#d6d6d6;">Generated schedules</h1>
+            <div class="rightpane-up">
+
+                <div class="container-table">
+                    <h2>Responsive Tables Using LI <small>Triggers on 767px</small></h2>
+                    <ul class="responsive-table">
+                      <li class="table-header">
+                        <div class="col col-1">Nr. </div>
+                        <div class="col col-2">Exercise</div>
+                        <div class="col col-3">Count</div>
+                        <!-- <div class="col col-3">Amount Due</div>
+                        <div class="col col-4">Payment Status</div> -->
+                      </li>
+                      <li class="table-row">
+                        <div class="col col-1" data-label="Nr.">{{ exercise_id[0] }}</div>
+                        <div class="col col-2" data-label="Exercise">{{ exercise_list[0] }}</div>
+                        <div class="col col-3" data-label="Count">{{ exercise_count[0] }}</div> 
+                        <!-- <div class="col col-3" data-label="Amount">$350</div>
+                        <div class="col col-4" data-label="Payment Status">Pending</div> -->
+                      </li>
+                      <li class="table-row">
+                        <div class="col col-1" data-label="Nr.">{{ exercise_id[1] }}</div>
+                        <div class="col col-2" data-label="Exercise">{{ exercise_list[1] }}</div>
+                        <div class="col col-3" data-label="Count">{{ exercise_count[1] }}</div> 
+                        <!-- <div class="col col-3" data-label="Amount">$220</div>
+                        <div class="col col-4" data-label="Payment Status">Pending</div> -->
+                      </li>
+                      <li class="table-row">
+                        <div class="col col-1" data-label="Nr.">{{ exercise_id[2] }}</div>
+                        <div class="col col-2" data-label="Exercise">{{ exercise_list[2] }}</div>
+                        <div class="col col-3" data-label="Count">{{ exercise_count[2] }}</div>
+                        <!-- <div class="col col-3" data-label="Amount">$220</div>
+                        <div class="col col-4" data-label="Payment Status">Pending</div> -->
+                      </li>
+                    </ul>
+                  </div>
+
+            </div>
+            <!-- <div style="background-color: #d6d6d6;"><br></div> -->
+            <div class="bottompane">
+                <!-- <h1>Train section</h1> -->
+                <a href="/training-session" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block" style="align-items: center;  justify-content: center; position: sticky;">Generate training schedule</a>
+            </div>
+            <div class="rightpane-bottom">
+
+                <div class="container-table">
+                    <h2>Responsive Tables Using LI <small>Triggers on 767px</small></h2>
+                    <ul class="responsive-table">
+                      <li class="table-header">
+                        <div class="col col-1">Day time</div>
+                        <div class="col col-2">Meals</div>
+                      </li>
+                      <li class="table-row">
+                        <div class="col col-1" data-label="Day time">Breakfast</div>
+                        <div class="col col-2" data-label="Meals">-</div>
+                      </li>
+                      <li class="table-row">
+                        <div class="col col-1" data-label="Day time">Lunch</div>
+                        <div class="col col-2" data-label="Meals">-</div>
+                      </li>
+                      <li class="table-row">
+                        <div class="col col-1" data-label="Day time">Dinner</div>
+                        <div class="col col-2" data-label="Meals">-</div>
+                      </li>
+                    </ul>
+                  </div>
+
+            </div>
+            <div class="bottompane">
+                <!-- <h1>Train section</h1> -->
+                <a href="/training-session" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block" style="align-items: center;  justify-content: center; position: sticky;">Generate meal schedule</a>
+            </div>
+          </div>
+
+      </div><br>      
+      <div class="bottompane">
+            <!-- <h1>Train section</h1> -->
+            <a href="/training-session" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block" style="align-items: center;  justify-content: center;">Train</a>
+      </div>
+</div>
+
+
+<script>
+    // Get the progress bar path elements
+    const outerBar = document.querySelector('.outer-circle');
+    const innerBar = document.querySelector('.inner-circle');
+  
+    // Set the initial values
+    let currentValue = 0;
+    const maxValue = 100;
+  
+    // Update the progress bar with a new value
+    function updateProgress(value) {
+      // Calculate the progress percentage
+      const progress = value / maxValue;
+      
+      // Calculate the new stroke dash offset values
+      const outerOffset = 251 - (progress * 188); // 188 is the length of the inner circle path
+      const innerOffset = 63 - (progress * 47); // 47 is the length of the outer circle path
+      
+      // Set the new stroke dash offset values
+      outerBar.style.strokeDashoffset = outerOffset;
+      innerBar.style.strokeDashoffset = innerOffset;
+      
+      // Update the current value
+      currentValue = value;
+    }
+    
+    // Call the function with a new value to update the progress bar
+    updateProgress(50);
+</script>
+
+{% endblock %}

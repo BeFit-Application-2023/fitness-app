@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block head %}{% endblock %}
+
+{% block body %}
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	<section class="login" style="font-family: 'Oswald', sans-serif;">
+
+		<div class="login_box">
+			<div class="left">
+				<div class="top_link"><a href="#"><img src="https://drive.google.com/u/0/uc?id=16U__U5dJdaTfNGobB_OpwAJ73vM50rPV&export=download" alt="">Back</a></div>
+				<div class="contact">
+					<form action="" method="POST">
+						<div style="text-align: center;">
+                            <h1> Registration </h1><br>
+                        </div> 
+
+                        <input type="text" id="first-name" name="first-name" placeholder="First name" size="40"><br>
+                        <input type="text" id="last-name" name="last-name" placeholder="Last name" size="40"><br>
+                        <input type="text" id="email" name="email" placeholder="Email" size="40"><br>
+                        <input type="text" id="password" name="password" placeholder="Password" size="40"><br>
+                        <input type="text" id="password-repeat" name="password-repeat" placeholder="Repeat password" size="40">
+                        <button class="submit">Submit</button>
+
+					</form>
+				</div>
+			</div>
+			<div class="right">
+				<div class="right-text">
+					<h2>BeFit</h2>
+					<h5></h5>
+
+			</div>
+		</div>
+	</section>
+{% endblock %}

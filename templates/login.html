@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block head %}{% endblock %}
+
+{% block body %}
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<!-- <body> -->
+	<section class="login" style="font-family: 'Oswald', sans-serif;">
+
+		<div class="login_box">
+			<div class="left">
+				<div class="top_link"><a href="#"><img src="https://drive.google.com/u/0/uc?id=16U__U5dJdaTfNGobB_OpwAJ73vM50rPV&export=download" alt="">Back</a></div>
+				<div class="contact">
+					<form method="POST">
+						<div style="text-align: center;">
+                            <h1>Login</h1><br>
+                            <!-- <button class="submit">LET'S GO</button> -->
+
+                        </div> 
+						<input type="text" id="email" name="email" placeholder="EMAIL" size="40">
+						<input type="text" id="password" name="password" placeholder="PASSWORD" size="40">
+                        <!-- <input type="submit" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block" value="Submit"> -->
+                        <button class="submit">Submit</button>
+
+					</form>
+				</div>
+			</div>
+			<div class="right">
+				<div class="right-text">
+					<h2>BeFit</h2>
+					<h5></h5>
+			</div>
+		</div>
+	</section>
+
+{% endblock %}

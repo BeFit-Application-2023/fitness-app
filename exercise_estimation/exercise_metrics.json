@@ -1,0 +1,17 @@
+{
+    "squats": {
+        "threshold-value": 0.054720940508462323,
+        "origin": 23,
+        "reference-points": [11, 25]
+    },
+    "push-ups": {
+        "threshold-value": 0.009614954123330438,
+        "origin": 30,
+        "refernce-points": [12, 16]
+    }, 
+    "bridge": {
+        "threshold-value": 0.0075,
+        "origin": 23,
+        "reference-points": [11, 25]
+    }
+}

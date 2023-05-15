@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block head %}{% endblock %}
+
+{% block body %}
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	<section class="login" style="font-family: 'Oswald', sans-serif;">
+
+		<div class="login_box">
+			<div class="left">
+				<div class="top_link"><a href="#"><img src="{{ url_for('static', filename='img/team-1.jpg') }}" alt="">Back</a></div>
+				<div class="contact">
+					<form action="" method="POST">
+						<div style="text-align: center;">
+                            <h1> Physical information </h1><br>
+                        </div> 
+
+                        <input type="text" id="weight" name="weight" placeholder="Weight" size="40"><span style="margin-left:-20px;">kg</span><br>
+                        <input type="text" id="height" name="height" placeholder="Height" size="40"><span style="margin-left:-20px;">cm</span><br>
+                        <input type="date" id="birth-date" name="birth-date"><br>
+
+						<label for="goals" style="font-size: 15px;">Choose goal:</label>
+
+                        <select name="goals" id="goals" style="width: 100%; height:50px" onclick="getOption()">
+                            <option value="lose">Lose weight</option>
+							<option value="gain">Gain weight</option>
+							<option value="fit">Be fit</option>
+						</select>
+
+						<label for="level" style="font-size: 15px;">Choose level:</label>
+
+						<select name="level" id="level" style="width: 100%; height:50px" onclick="getOption()">
+							<option value="beginner">Beginner</option>
+							<option value="intermidiate">Intermidiate</option>
+							<option value="expert">Expert</option>
+						</select>
+
+						<!-- 
+							{% for exercise in exercise_list %}
+                                <option value="{{ exercise }}">{{ exercise }}</option>
+                            {% endfor %} -->
+                        <!-- <option value="squats">Squats</option>
+                        <option value="push-ups">Push ups</option>
+                        <option value="bridge">Bridge</option> -->
+                        <!-- <input type="text" id="first-name" name="first-name" placeholder="First name" size="40"><br>
+                        <input type="text" id="last-name" name="last-name" placeholder="Last name" size="40"><br>
+                        <input type="text" id="email" name="email" placeholder="Email" size="40"><br>
+                        <input type="text" id="password" name="password" placeholder="Password" size="40"><br>
+                        <input type="text" id="password-repeat" name="password-repeat" placeholder="Repeat password" size="40"> -->
+                        <button class="submit">Submit</button>
+
+					</form>
+				</div>
+			</div>
+			<div class="right">
+				<div class="right-text">
+					<h2>BeFit</h2>
+					<h5></h5>
+				<!-- </div>
+				    <div class="right-inductor"><img src="{{ url_for('static', filename='img/about.jpg') }}" alt="">
+                </div> -->
+			</div>
+		</div>
+	</section>
+{% endblock %}
